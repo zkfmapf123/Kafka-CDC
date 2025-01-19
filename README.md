@@ -64,3 +64,20 @@ CREATE TABLE users (
     INDEX idx_email (email)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 ```
+
+## Connector 구성
+
+```sh
+curl -X POST http://localhost:8083/connectors \
+    -H "Content-Type: application/json" \
+    -d @connector/mysql-source-connector.json
+
+# 모든 커넥터 리스트 조회
+curl -X GET http://localhost:8083/connectors
+
+# 특정 커넥터 상세 정보 조회
+curl -X GET http://localhost:8083/connectors/mysql-source-connector
+
+# 특정 커넥터의 설정 정보 조회
+curl -X GET http://localhost:8083/connectors/mysql-source-connector/config
+```
