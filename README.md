@@ -67,6 +67,8 @@ CREATE TABLE users (
 
 ## Connector 구성
 
+### Command
+
 ```sh
 curl -X POST http://localhost:8083/connectors \
     -H "Content-Type: application/json" \
@@ -81,3 +83,36 @@ curl -X GET http://localhost:8083/connectors/mysql-source-connector
 # 특정 커넥터의 설정 정보 조회
 curl -X GET http://localhost:8083/connectors/mysql-source-connector/config
 ```
+
+### users_outbox 테이블 Source Connector
+
+- users_outbox에 (INSERT, UPDATE, DELETE) 이벤트 발생 시 카프카 users.users_outbox 토픽으로 이벤트 전달
+
+```json
+{
+  "name": "mysql-source-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+    "database.hostname": "mysql",
+    "database.port": "3306",
+    "database.user": "dobby",
+    "database.password": "1234",
+    "database.server.id": "1",
+    "database.server.name": "users",
+    "database.include.list": "users",
+    "table.include.list": "users.users_outbox",
+    "database.history.kafka.bootstrap.servers": "kafka:9092",
+    "database.history.kafka.topic": "schema-changes.users",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "false",
+    "value.converter.schemas.enable": "false",
+    "include.schema.changes": "true",
+    "snapshot.mode": "initial"
+  }
+}
+```
+
+## 참고
+
+- <a href="https://www.confluent.io/product/connectors/"> Kafka Connectors </a>
