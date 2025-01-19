@@ -1,4 +1,4 @@
-# CDC Configuration
+# CDC / Stream Configuration
 
 ![cdc](./public/cdc-2.png)
 
@@ -112,6 +112,14 @@ curl -X GET http://localhost:8083/connectors/mysql-source-connector/config
   }
 }
 ```
+
+![stream](./public/stream.png)
+
+- 음악, 영상등이 실시간으로 송출되어 컨텐츠를 구성할때 사용
+- 컨텐츠 송출 시 컨텐츠 송출 서버에서 컨텐츠 송출 이벤트를 카프카 토픽으로 전달
+- 컨텐츠 송출 서버에서 컨텐츠 송출 이벤트를 카프카 토픽으로 전달
+
+## Kafka Schema Registry
 
 ## 참고
 
