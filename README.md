@@ -28,7 +28,7 @@ CREATE TABLE users (
     INDEX idx_email (email)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-	CREATE TABLE frontend (
+CREATE TABLE frontend (
     id INT NOT NULL AUTO_INCREMENT,
 		event_type VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE users (
     INDEX idx_email (email)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-	CREATE TABLE backend (
+CREATE TABLE backend (
     id INT NOT NULL AUTO_INCREMENT,
 		event_type VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE users (
     INDEX idx_email (email)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-	CREATE TABLE devops (
+CREATE TABLE devops (
     id INT NOT NULL AUTO_INCREMENT,
 		event_type VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
